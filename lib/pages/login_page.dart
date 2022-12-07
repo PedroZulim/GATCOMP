@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:flutter_application/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class Home extends StatelessWidget {
     });
   }
 
-  login() async {}
+  login() {}
 
   registrar() async {}
 
@@ -52,9 +53,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Tela de Login'),
+        centerTitle: true,
+        elevation: 30,
+        toolbarHeight: 100,
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 100),
+          padding: EdgeInsets.only(top: 90),
           child: Form(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +82,7 @@ class Home extends StatelessWidget {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(10.0)),
+                            const BorderRadius.all(Radius.circular(15.0)),
                       ),
                       labelText: 'Email',
                     ),
@@ -96,8 +103,7 @@ class Home extends StatelessWidget {
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         borderSide: BorderSide(
                           color: Color.fromARGB(255, 255, 255, 255),
                         ),
@@ -118,13 +124,8 @@ class Home extends StatelessWidget {
                   padding: EdgeInsets.all(24.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        if (isLogin) {
-                          login();
-                        } else {
-                          registrar();
-                        }
-                      }
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
